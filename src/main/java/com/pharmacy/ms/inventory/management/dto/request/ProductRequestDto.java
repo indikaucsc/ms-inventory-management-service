@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class ProductRequestDto {
+    private long id;
     private String name;
     private int quantity;
     private BigDecimal price;

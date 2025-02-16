@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,10 @@ public class ProductService {
         product.setName(requestDto.getName());
         product.setQuantity(requestDto.getQuantity());
         product.setPrice(requestDto.getPrice());
+        product.setProductCode("D"+System.currentTimeMillis());
+        product.setCategory("Tablet");
+        product.setStrength("500mg");
+        product.setBatchNumber(LocalDate.now().format(DateTimeFormatter.ofPattern("MM-YY")));
         product.setExpirationDate(requestDto.getExpirationDate());
 
         ProductEntity savedProduct = productRepository.save(product);
@@ -111,6 +116,7 @@ public class ProductService {
         ProductResponseDto dto = new ProductResponseDto();
         dto.setId(product.getId());
         dto.setName(product.getName());
+        dto.setProductCode(product.getProductCode());
         dto.setQuantity(product.getQuantity());
         dto.setPrice(product.getPrice());
         dto.setExpirationDate(product.getExpirationDate());

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class ProductResponseDto {
     private Long id;
     private String name;
+    private String productCode;
     private int quantity;
     private BigDecimal price;
     private LocalDate expirationDate;

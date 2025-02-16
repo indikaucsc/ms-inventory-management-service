@@ -21,6 +21,18 @@ public class ProductEntity {
     @Column(nullable = false, length = 100)
     private String name;
 
+    @Column(name = "product_code")
+    private String productCode;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "strength")
+    private String strength;
+
+    @Column(name = "batch_number")
+    private String batchNumber;
+
     @Column(nullable = false)
     private int quantity;
 

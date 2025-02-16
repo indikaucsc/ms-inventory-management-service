@@ -1,53 +1,30 @@
-//package com.pharmacy.ms.inventory.management.config;
-//
-////import org.springdoc.core.models.GroupedOpenApi;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import springfox.documentation.builders.PathSelectors;
-//import springfox.documentation.builders.RequestHandlerSelectors;
-//import springfox.documentation.service.ApiInfo;
-//import springfox.documentation.service.Contact;
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//
-//import java.util.Collections;
-////
-////@Configuration
-////public class SwaggerConfig {
-////
-////    @Bean
-////    public GroupedOpenApi publicApi() {
-////        return GroupedOpenApi.builder()
-////                .group("public-api")
-////                .pathsToMatch("/api/**")
-////                .build();
-////    }
-////
-////}
-////
-//
-//@Configuration
-//@EnableSwagger2
-//public class SwaggerConfig {
-//    @Bean
-//    public Docket api() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .select()
-//                .apis(RequestHandlerSelectors.any())
-//                .paths(PathSelectors.any())
-//                .build()
-//                .apiInfo(apiInfo());
-//    }
-//
-//    private ApiInfo apiInfo() {
-//        return new ApiInfo(
-//                "API Title",
-//                "API Description",
-//                "1.0.0",
-//                "Terms of service",
-//                new Contact("Name", "www.example.com", "myemail@example.com"),
-//                "License of API", "API license URL", Collections.emptyList());
-//    }
-//}
-//
+package com.pharmacy.ms.inventory.management.config;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .components(new Components())
+                .info(new Info()
+                        .title("User Management API")
+                        .description("API Documentation for User Management Microservice")
+                        .version("1.0.0")
+                        .contact(new Contact()
+                                .name("Your Name")
+                                .email("your-email@example.com")
+                                .url("https://yourwebsite.com"))
+                        .license(new License()
+                                .name("API License")
+                                .url("https://yourlicenseurl.com")));
+    }
+}
